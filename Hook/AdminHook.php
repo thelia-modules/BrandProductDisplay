@@ -14,13 +14,16 @@ namespace BrandProductDisplay\Hook;
 
 use Thelia\Core\Event\Hook\HookRenderEvent;
 use \Thelia\Core\Hook\BaseHook;
+
 /**
  * Class AdminHook
  */
-class AdminHook extends BaseHook {
+class AdminHook extends BaseHook
+{
 
 
-    public function onBrandTabContent(HookRenderEvent $event){
-        $event->add($this->render("brand-product-list.html",$event->getArguments()));
+    public function onBrandTabContent(HookRenderEvent $event)
+    {
+        $event->add($this->render("brand-product-list.html", $event->getArguments()));
     }
 }
