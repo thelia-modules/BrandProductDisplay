@@ -9,19 +9,18 @@
 /*      For the full copyright and license information, please view the LICENSE.txt  */
 /*      file that was distributed with this source code.                             */
 /*************************************************************************************/
+/*************************************************************************************/
+namespace BrandProductDisplay\Hook;
 
-namespace BrandProductDisplay;
+use Thelia\Core\Event\Hook\HookRenderEvent;
+use \Thelia\Core\Hook\BaseHook;
+/**
+ * Class AdminHook
+ */
+class AdminHook extends BaseHook {
 
-use Thelia\Module\BaseModule;
 
-class BrandProductDisplay extends BaseModule
-{
-
-    const DOMAIN = 'brandproductdisplay';
-    /*
-     * You may now override BaseModuleInterface methods, such as:
-     * install, destroy, preActivation, postActivation, preDeactivation, postDeactivation
-     *
-     * Have fun !
-     */
+    public function onBrandTabContent(HookRenderEvent $event){
+        $event->add($this->render("brand-product-list.html",$event->getArguments()));
+    }
 }

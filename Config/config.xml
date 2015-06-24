@@ -28,13 +28,13 @@
     </services>
     -->
 
-    <!--
+
     <hooks>
-        <hook id="brandproductdisplay.hook" class="BrandProductDisplay\Hook\MySuperHook" scope="request">
-            <tag name="hook.event_listener" event="main.body.bottom" type="front|back|pdf|email" method="onMainBodyBottom" />
+        <hook id="brandproductdisplay.admin.hook" class="BrandProductDisplay\Hook\AdminHook" scope="request">
+            <tag name="hook.event_listener" event="brand.tab-content" type="back" method="onBrandTabContent" />
         </hook>
     </hooks>
-    -->
+
 
     <!--
     <exports>

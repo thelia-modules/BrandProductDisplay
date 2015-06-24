@@ -1,0 +1,35 @@
+{if $brand_id}
+    <div class="row" style="border-top: 1px dotted #a5ced8; border-bottom: 1px dotted #a5ced8; margin-top: 10px;">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12 title">
+                    {intl d="brandproductdisplay.bo.default" l="Related Product"}
+                </div>
+            </div>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>{intl l="ID" d="brandproductdisplay.bo.default"}</th>
+                    <th>{intl l="Name" d="brandproductdisplay.bo.default"}</th>
+                    <th>{intl l="Chapo" d="brandproductdisplay.bo.default"}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {loop type="product" name="brand-product" brand="$brand_id"}
+                    <tr>
+                        <td>
+                          <a href="{url path="{$URL}"}">{$ID}</a>
+                        </td>
+                        <td>
+                            {$TITLE}
+                        </td>
+                        <td>
+                            {$CHAPO}
+                        </td>
+                    </tr>
+                {/loop}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{/if}
