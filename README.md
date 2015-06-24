@@ -17,3 +17,8 @@ Add it in your main Thelia composer.json file
 composer require thelia/brand-product-display-module:~0.1
 ```
 
+## Usage
+
+After activation you just have to go to brand page edit.
+On "Modules" tab you can see a list of related product.
+
