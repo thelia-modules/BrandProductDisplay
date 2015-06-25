@@ -10,15 +10,44 @@
                 {ifloop rel="brand-product"}
                 <thead>
                 <tr>
-                    <th>{intl l="ID" d="brandproductdisplay.bo.default"}</th>
-                    <th>{intl l="Ref" d="brandproductdisplay.bo.default"}</th>
-                    <th>{intl l="Name" d="brandproductdisplay.bo.default"}</th>
+                    <th class="object-title">
+                        {admin_sortable_header
+                        current_order=$product_order
+                        order='id'
+                        reverse_order='id_reverse'
+                        path={url path="{url path="/admin/brand/update/{$brand_id}?current_tab=modules"}"}
+                        request_parameter_name='product_order'
+                        label={intl l='ID' d="brandproductdisplay.bo.default"}
+                        }
+                    </th>
+                    <th>
+                        {admin_sortable_header
+                        current_order=$product_order
+                        order='ref'
+                        reverse_order='ref_reverse'
+                        path={url path="{url path="/admin/brand/update/{$brand_id}?current_tab=modules"}"}
+                        request_parameter_name='product_order'
+                        label={intl l='Ref' d="brandproductdisplay.bo.default"}
+                        }
+                    </th>
+                    <th>
+                        {admin_sortable_header
+                        current_order=$product_order
+                        order='alpha'
+                        reverse_order='alpha_reverse'
+                        path={url path="{url path="/admin/brand/update/{$brand_id}?current_tab=modules"}"}
+                        request_parameter_name='product_order'
+                        label={intl l='Name' d="brandproductdisplay.bo.default"}
+                        }
+                    </th>
                     <th>{intl l="Chapo" d="brandproductdisplay.bo.default"}</th>
+                    <th>{intl l="Category" d="brandproductdisplay.bo.default"}</th>
                 </tr>
                 </thead>
                 <tbody>
                 {$page = $smarty.get.page|default:1}
-                {loop type="product" name="brand-product" brand="$brand_id" limit=10 page=$page  backend_context="1"}
+                {$product_order = $smarty.get.product_order|default:"alpha"}
+                {loop type="product" name="brand-product" brand="$brand_id" limit=10 page=$page  order=$product_order backend_context="1"}
                     <tr>
                         <td>
                           <a href="{url path="{$URL}"}">{$ID}</a>
@@ -31,6 +60,11 @@
                         </td>
                         <td>
                             {$CHAPO}
+                        </td>
+                        <td>
+                            {loop type="category" name="brand-cat" id={$DEFAULT_CATEGORY} limit =1}
+                                {$TITLE}
+                            {/loop}
                         </td>
                     </tr>
                 {/loop}
